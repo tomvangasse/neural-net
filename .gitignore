@@ -1,0 +1,16 @@
+# Virtual environment — 159 MB of installed packages. Never commit this;
+# it's rebuildable from a requirements file and is machine-specific.
+.venv/
+
+# Python bytecode caches
+__pycache__/
+*.py[cod]
+
+# macOS Finder metadata
+.DS_Store
+
+# Downloaded datasets / model weights
+data/
+*.npz
+*.pt
+*.pth

@@ -1,0 +1,6 @@
+# Stages 1-4: pure NumPy, plus scikit-learn only for the digits dataset.
+numpy==2.0.2
+scikit-learn==1.6.1
+
+# Stage 5 only. Not currently installed in .venv -- `pip install torch` to run 05.
+torch>=2.2
