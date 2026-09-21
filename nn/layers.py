@@ -28,3 +28,12 @@ class Dense(Layer):
         self.grads["b"] = dout.sum(axis=0)          # The bias was added to every example, so its gradient is the total error across all of them
         return dout @ self.params["W"].T            # Pass the error backwards through the weights, to the layer below
 
+
+class ReLU(Layer):
+    def forward(self,X):
+        self.mask = X > 0       # a True/False mask for positive/negative numbers in the matrix
+        return X * self.mask    # mask out the negative numbers in X
+
+    def backward(self, dout):
+        return dout * self.mask
+    
