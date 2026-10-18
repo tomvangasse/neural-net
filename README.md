@@ -1,4 +1,24 @@
-# A neural network from scratch using NumPy
+# A digit-recognising neural network built from scratch using NumPy
+Using no ML frameworks
+
+## Why I built this
+I built this to teach myself how simple neural networks actually work under all the abstraction of modern ML frameworks. I also took this project to learn how to make effective use of AI coding assistants.
+
+## Results
+Final test accuracy is 97.8%, with a training time of 11 seconds on my machine.
+The model is trained on 56,000 MNIST images, with 14,000 being used to test the model after training
+
+## How the model works
+
+## How I tested it
+
+## Running it
+
+## Web demo
+   
+
+
+
 
 ## How the model works
 ### Training
@@ -20,4 +40,4 @@
 5) the optimiser uses the gradients for each parameter in each layer, and changes each value in place based on a learning rate
    param -= lr * grad
 
-   
+
