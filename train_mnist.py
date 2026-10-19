@@ -5,6 +5,8 @@ from nn.layers import Dense, ReLU
 from nn.losses import softmax_cross_entropy
 from nn.model import Model
 from nn.optimisers import SGD
+from nn.io import save_model
+
 
 rng = np.random.default_rng(0)
 
@@ -13,23 +15,23 @@ X, y = fetch_openml('mnist_784', version=1, return_X_y=True, as_frame=False, par
                     # the 'liac-arff' parser avoids the pandas dependency fetch_openml would otherwise ask for
 
 X = X / 255.0       # scales down the images to [0, 1]
-y = y.astype(int)   # converts the text that is given to integers
+y = y.astype(int)   # converts the label text to integers
 
-perm = rng.permutation(len(X))  # gets a random permutation of X
+perm = rng.permutation(len(X))
 X, y = X[perm], y[perm]         # permutates X and y by the same amount so still they match
 
 split = int(0.8 * len(X))                   # generates a split for the randomised dataset
 X_train, y_train = X[:split], y[:split]     # 80% for training
 X_test, y_test = X[split:], y[split:]       # 20% for testing the model
 
-model = Model([         # creates the model
+model = Model([
     Dense(784, 128, rng=rng),   # 784 is the amount of data in one image, and 128 is the arbitrary size of the hidden layer
     ReLU(),
     Dense(128, 64, rng=rng),    # the next layers input must match the last ones output, so 128. 64 is arbitrary
     ReLU(),
     Dense(64, 10, rng=rng),     # 10 is the number of outputs we need, to represent each digit (0,..,9)
 ])
-optimizer = SGD(lr=0.2)         # creates the optimiser with a learning rate of 0.2
+optimizer = SGD(lr=0.2)
 
 def accuracy(X, y):
     logits = model.forward(X)               # pushes a dataset through the model to get scores
@@ -55,3 +57,5 @@ for epoch in range(epochs):
         print(f"epoch {epoch:2d}  loss {loss:.4f}  train acc {accuracy(X_train, y_train):.3f}  test acc {accuracy(X_test, y_test):.3f}")
 
 print(f"\nfinal test accuracy: {accuracy(X_test, y_test):.3f}")
+
+save_model(model, "mnist_model.npz")

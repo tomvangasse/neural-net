@@ -14,3 +14,12 @@ data/
 *.npz
 *.pt
 *.pth
+
+# Generated from mnist_model.npz by export_weights.py (deploy.sh re-runs it)
+web/weights.json
+
+# pytest's cache of last-failed tests etc.
+.pytest_cache/
+
+# Claude Code local config (editor-specific, not part of the project)
+.claude/
