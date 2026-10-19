@@ -38,7 +38,7 @@ The trained parameters are saved to `mnist_model.npz` at the end of `train_mnist
 `load_model` reads the file back into a model, so a trained set of parameters can be used without having to retrain the model.
 
 ## How I tested it
-I used pytest, it allowed me to set up testing for whole system, every file starting with `test_\*.py` can have `test_*()` functions that pytest reads and runs automatically when you run the tests.
+I used pytest, it allowed me to set up testing for whole system, every file starting with `test_*.py` can have `test_*()` functions that pytest reads and runs automatically when you run the tests.
 
 For example `test_model_gradients()`, it tests the gradients given by backpropegation are correct over the whole model. It checks the gradients with two separate methods and asserts that they are the same.
 
