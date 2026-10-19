@@ -1,5 +1,6 @@
 # A digit-recognising neural network built from scratch using NumPy
 Using no ML frameworks.
+
 I used AI tools to help with teaching me the basics, and to assist with checking code. I took it upon myself to attempt to write the code myself with the AI's tutoring.
 
 ## Why I built this
